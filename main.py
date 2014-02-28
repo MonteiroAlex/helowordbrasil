@@ -19,12 +19,13 @@ import webapp2
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         nome=self.request.get('nome')
-        self.response.write('Hello world_Brasil!%nome')
+        self.response.write('Hello world_Brasil %s !'%nome)
 
 class MeuHandler(webapp2.RequestHandler):
     def get(self):
-        self.redirect('www.google.com.br')
+        self.redirect('http://www.google.com.br')
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),('/meu', MeuHandler)
+    ('/', MainHandler),
+    ('/redirecionar', MeuHandler)
 ], debug=True)
